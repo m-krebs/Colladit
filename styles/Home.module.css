@@ -9,17 +9,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @media (prefers-color-scheme: dark) {
-  .card,
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
-  }
   .btn__ctc,
   .shareIcon {
     filter: invert();
@@ -43,25 +36,13 @@
 }
 
 .btn__ctc:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1, 1.1);
 }
 
 .btn__ctc:active {
-  transform: scale(1);
+  transform: scale(1, 0.9);
 }
 
 .codemirror {
   font-size: 1.5rem;
-}
-
-.shareIcon:active + .shareText {
-  display: block;
-}
-
-.shareIcon:hover {
-  transform: scale(1.1, 1.1);
-}
-
-.shareText {
-  display: none;
 }

@@ -16,16 +16,18 @@ export default function Home() {
 
             <main className={styles.main}>
                 <div className={styles.share}>
-                    <div className={styles.shareText}>
-                        <p className={"mr-3"}>Share to collaborate:</p><a className={""} href={"http://localhost:3000"}
+                    <button onClick={show} className={"mr-3 mt-2"}><Image src={"/share.svg"} alt={"Share"} height={"20px"}
+                                                                     width={"20px"}
+                                                                     className={styles.shareIcon}/></button>
+                    <div id={"shareTextItem"} style={{display:"none"}}>
+                        <p className={"mr-3"}></p><a className={"text-xl text-gray-300 font-bold"}
+                                                                          href={"http://localhost:3000"}
                                                                           target={"_blank"}
                                                                           rel={"noopener noreferrer"}>https://generated.link/blablabla</a>
                     </div>
-                    <Image src={"/share.svg"} alt={"Share"} height={"20px"} width={"20px"}
-                           className={styles.shareIcon}/>
-                    <button className={styles.btn__ctc}><Image src={"/ctc.svg"} height={"20px"} width={"20px"}
+                    {/*<button className={styles.btn__ctc}><Image src={"/ctc.svg"} height={"20px"} width={"20px"}
                                                                alt={"CopyToClipboard"}
-                                                               onClick={copyToClipboard}></Image></button>
+                                                               onClick={copyToClipboard}></Image></button>*/}
                 </div>
             </main>
             <Editor/>
@@ -36,5 +38,14 @@ export default function Home() {
 async function copyToClipboard() {
     let link = "http://localhost:3000"
     await navigator.clipboard.writeText(link);
-    // alert("Copied text " + link)
+}
+
+function show() {
+    let e = document.getElementById("shareTextItem");
+    if (e.style.display === "none") {
+        e.style.display = "flex";
+    } else {
+        e.style.display = "none";
+    }
+    copyToClipboard().then()
 }
