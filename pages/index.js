@@ -29,7 +29,7 @@ export default function Home() {
                                                                alt={"CopyToClipboard"}
                                                                onClick={copyToClipboard}></Image></button>*/}
                 </div>
-                <img src={"/copied.svg"} alt={"Copied"} className={"h-50 w-100"}/>
+                <img src={"/copied.svg"} alt={"Copied"}/>
                 <p className={"bg-gray-500 p-2 top-20 z-1 absolute"}><i>Copied</i></p>
             </main>
             <Editor/>
