@@ -16,7 +16,7 @@ export default function Home() {
 
             <main className={styles.main}>
                 <div className={styles.share}>
-                    <button onClick={show} className={"mr-3 mt-2"}><Image src={"/share.svg"} alt={"Share"} height={"20px"}
+                    <button onClick={show} className={"pr-3 pt-2"}><Image src={"/share.svg"} alt={"Share"} height={"20px"}
                                                                      width={"20px"}
                                                                      className={styles.shareIcon}/></button>
                     <div id={"shareTextItem"} style={{display:"none"}}>
@@ -29,6 +29,8 @@ export default function Home() {
                                                                alt={"CopyToClipboard"}
                                                                onClick={copyToClipboard}></Image></button>*/}
                 </div>
+                <img src={"/copied.svg"} alt={"Copied"} className={"h-50 w-100"}/>
+                <p className={"bg-gray-500 p-2 top-20 z-1 absolute"}><i>Copied</i></p>
             </main>
             <Editor/>
         </div>
