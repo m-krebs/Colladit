@@ -16,21 +16,19 @@ export default function Home() {
 
             <main className={styles.main}>
                 <div className={styles.share}>
-                    <button onClick={show} className={"pr-3 pt-2"}><Image src={"/share.svg"} alt={"Share"} height={"20px"}
-                                                                     width={"20px"}
-                                                                     className={styles.shareIcon}/></button>
-                    <div id={"shareTextItem"} style={{display:"none"}}>
-                        <p className={"mr-3"}></p><a className={"text-xl text-gray-300 font-bold"}
-                                                                          href={"http://localhost:3000"}
-                                                                          target={"_blank"}
-                                                                          rel={"noopener noreferrer"}>https://generated.link/blablabla</a>
+                    <button onClick={show} className={"pr-3 pt-2"}><Image src={"/share.svg"} alt={"Share"}
+                                                                          height={"20px"}
+                                                                          width={"20px"}
+                                                                          className={styles.shareIcon}/></button>
+                    <div id={"shareTextItem"} style={{display: "none"}}>
+                        <p className={"mr-3"}></p>
+                        <a className={"text-xl text-gray-300 font-bold"}
+                           href={"http://localhost:3000"}
+                           target={"_blank"}
+                           rel={"noopener noreferrer"}>https://generated.link/blablabla</a>
                     </div>
-                    {/*<button className={styles.btn__ctc}><Image src={"/ctc.svg"} height={"20px"} width={"20px"}
-                                                               alt={"CopyToClipboard"}
-                                                               onClick={copyToClipboard}></Image></button>*/}
                 </div>
-                <img src={"/copied.svg"} alt={"Copied"}/>
-                <p className={"bg-gray-500 p-2 top-20 z-1 absolute"}><i>Copied</i></p>
+                <p id={"popup_copied"} className={styles.copied_popup}>Copied</p>
             </main>
             <Editor/>
         </div>
@@ -40,9 +38,15 @@ export default function Home() {
 async function copyToClipboard() {
     let link = "http://localhost:3000"
     await navigator.clipboard.writeText(link);
+    let e = document.getElementById("popup_copied");
+    e.style.display = "flex"
+    setTimeout(()=>e.style.display="none", 2000)
 }
 
+let shareTimeout;
+
 function show() {
+    let isOpen = false;
     let e = document.getElementById("shareTextItem");
     if (e.style.display === "none") {
         e.style.display = "flex";
@@ -50,4 +54,6 @@ function show() {
         e.style.display = "none";
     }
     copyToClipboard().then()
+    if(!isOpen) clearTimeout(shareTimeout)
+    shareTimeout = setTimeout(()=>e.style.display="none", 10000)
 }

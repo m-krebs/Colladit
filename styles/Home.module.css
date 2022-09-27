@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   border: white 2px solid;
+  border-radius: 5px;
   padding: 10px 10px 10px 20px;
 }
 
@@ -45,4 +46,16 @@
 
 .codemirror {
   font-size: 1.5rem;
+}
+
+.copied_popup {
+  display: none;
+  position: absolute;
+  top: 95px;
+  left: 40px;
+  background-color: lightgray;
+  color: black;
+  z-index: 1;
+  padding: 6px;
+  border-radius: 0.5em;
 }
