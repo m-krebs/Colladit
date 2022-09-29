@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Link from "next/link";
+import styles from '../styles/Home.module.css';
 import React from 'react';
 import Editor from "../components/editor";
 
@@ -40,20 +39,21 @@ async function copyToClipboard() {
     await navigator.clipboard.writeText(link);
     let e = document.getElementById("popup_copied");
     e.style.display = "flex"
-    setTimeout(()=>e.style.display="none", 2000)
+    setTimeout(()=>e.style.display="none", 1500)
 }
 
 let shareTimeout;
 
 function show() {
-    let isOpen = false;
+    let isOpen = true;
     let e = document.getElementById("shareTextItem");
     if (e.style.display === "none") {
+        isOpen = false;
         e.style.display = "flex";
     } else {
         e.style.display = "none";
     }
-    copyToClipboard().then()
-    if(!isOpen) clearTimeout(shareTimeout)
+    if (!isOpen) copyToClipboard().then()
+    clearTimeout(shareTimeout)
     shareTimeout = setTimeout(()=>e.style.display="none", 10000)
 }

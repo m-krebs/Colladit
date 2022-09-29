@@ -1,5 +1,5 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 6rem;
 }
 
 .main {
@@ -46,13 +46,15 @@
 
 .codemirror {
   font-size: 1.5rem;
+  width: 90%;
+
 }
 
 .copied_popup {
   display: none;
   position: absolute;
   top: 95px;
-  left: 40px;
+  left: 95px;
   background-color: lightgray;
   color: black;
   z-index: 1;
