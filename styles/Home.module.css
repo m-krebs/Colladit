@@ -44,6 +44,8 @@
   transform: scale(1, 0.9);
 }
 
+.toolbar {}
+
 .codemirror {
   font-size: 1.5rem;
   width: 90%;

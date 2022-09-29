@@ -10,6 +10,10 @@ export default function Editor() {
     }, []);
     return (
         <section className={styles.codemirror}>
+            <div className={styles.toolbar}>
+                <select name={"fontStyle"}></select>
+                <select name={"fontSize"}></select>
+            </div>
             <CodeMirror
                 placeholder={"Share the Link to work collaborative. Already shared? Then have fun typing"}
                 height="85vh"
