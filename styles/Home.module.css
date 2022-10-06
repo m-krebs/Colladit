@@ -49,16 +49,6 @@
   border-radius: 0.5em;
 }
 
-.closeDialog {
-  cursor: default;
-  padding: 5px;
-  border-radius: 5em;
-}
-
-.closeDialog:hover {
-  background-color: #92ffa0;
-}
-
 @media (prefers-color-scheme: dark) {
   .btn__ctc,
   .shareIcon {
