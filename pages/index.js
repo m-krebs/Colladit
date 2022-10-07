@@ -40,9 +40,11 @@ export default function Home() {
 async function copyToClipboard() {
     let link = "http://localhost:3000"
     await navigator.clipboard.writeText(link);
-    let e = document.getElementById("popup_copied");
+    // let e = document.getElementById("popup_copied");
+    // e.style.display = "flex"
+    let e = document.getElementById("SuccessDialog");
     e.style.display = "flex"
-    setTimeout(()=>e.style.display="none", 1500)
+    setTimeout(()=>e.style.display="none", 4000)
 }
 
 let shareTimeout;

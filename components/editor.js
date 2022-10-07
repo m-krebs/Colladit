@@ -5,6 +5,8 @@ import {darcula} from '@uiw/codemirror-theme-darcula';
 import React from "react";
 
 export default function Editor() {
+
+
     const onChange = React.useCallback((value) => {
         console.log('value:', value);
     }, []);
@@ -15,7 +17,12 @@ export default function Editor() {
                 <button><img src={"/assets/img/italic.svg"} alt={"Mark text bold"}/></button>
                 <button><img src={"/assets/img/underline.svg"} alt={"Mark text bold"}/></button>
                 <select name={"fontFamily"}></select>
-                <select name={"fontSize"}></select>
+                <div className={styles.fontSize}>
+                    <select name={"fontSize"}>
+                        <option value={"14"}>14</option>
+                    </select>
+                    <input type={"text"} name={"fontSize"}/>
+                </div>
                 <input type={"color"} name={"fontColor"}/>
                 <button><img src={"/assets/img/alignl.svg"} alt={"Mark text bold"}/></button>
                 <button><img src={"/assets/img/alignc.svg"} alt={"Mark text bold"}/></button>
@@ -28,5 +35,5 @@ export default function Editor() {
                 theme={darcula}
                 onChange={onChange}
             /></section>
-    )
+)
 }

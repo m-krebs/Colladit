@@ -41,6 +41,41 @@
     width: 90%;
 }
 
+.fontSize {
+    position:relative;
+    background-color:black;
+    color: black;
+    border:solid grey 1px;
+    width:60px;
+    height:24px;
+}
+
+.fontSize select {
+    background-color: transparent;
+    position:absolute;
+    top:0;
+    left:0;
+    font-size:14px;
+    border:none;
+    width:60px;
+    margin:0;
+}
+
+.fontSize input {
+    background-color: black;
+    color: white;
+    position:absolute;
+    top:0;
+    left:0;
+    width:35px;
+    font-size:12px;
+    border:none;
+}
+
+.fontSize select:focus, .fontSize input:focus {
+    outline:none;
+}
+
 @media (prefers-color-scheme: dark) {
     .toolbar img {
         filter: invert(1);
