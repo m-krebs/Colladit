@@ -6,15 +6,6 @@ class Char {
     }
 }
 
-class Identifier {
-    digit;
-    site;
-    constructor(digit: number, siteId: number) {
-        this.digit = digit;
-        this.site = siteId;
-    }
-}
-
 function comparePosition(p1: Identifier[], p2: Identifier[]) { // identifier array
     for (let i = 0; i < Math.min(p1.length, p2.length); i++) {
         const comp = compareIdentifier(p1[i], p2[i]);
