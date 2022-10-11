@@ -49,6 +49,10 @@
   border-radius: 0.5em;
 }
 
+.codemirror {
+  font-size: larger;
+}
+
 @media (prefers-color-scheme: dark) {
   .btn__ctc,
   .shareIcon {
