@@ -17,14 +17,16 @@ export default function useCodeMirror() {
     useEffect(() => {
         if (!element) return;
 
+        const myState = EditorState.create({
+            extensions: [
+                basicSetup,
+                darcula,
+                placeholder("Share the link for collaborative editing")
+            ],
+        })
+
         const view = new EditorView({
-            state: EditorState.create({
-                extensions: [
-                    basicSetup,
-                    darcula,
-                    placeholder("Share the link for collaborative editing")
-                ],
-            }),
+            state: myState,
             parent: element,
         });
         console.log(view.state.doc)
