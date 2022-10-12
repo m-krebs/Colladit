@@ -4,8 +4,14 @@ import styles from '../styles/Home.module.css';
 import React from 'react';
 import Editor from "../components/editor";
 import SuccessDialog from "../components/dialogs/successDialog";
+import {useRouter} from "next/router";
+import {router} from "next/client";
+
+const HOST = "http://localhost:3000";
 
 export default function Home() {
+    const router = useRouter();
+    const link = HOST + router.asPath;
     return (
         <div className={styles.container}>
             <Head>
@@ -24,22 +30,21 @@ export default function Home() {
                     <div id={"shareTextItem"} style={{display: "none"}}>
                         <p className={"mr-3"}></p>
                         <a className={"text-xl text-gray-300 font-bold"}
-                           href={"http://localhost:3000"}
+                           href={link}
                            target={"_blank"}
-                           rel={"noopener noreferrer"}>https://generated.link/blablabla</a>
+                           rel={"noopener noreferrer"}>{link}</a>
                     </div>
                 </div>
                 <p id={"popup_copied"} className={styles.copied_popup}>Copied</p>
             </main>
-            <SuccessDialog/>
             <Editor/>
+            <SuccessDialog/>
         </div>
     )
 }
 
 async function copyToClipboard() {
-    let link = "http://localhost:3000"
-    await navigator.clipboard.writeText(link);
+    await navigator.clipboard.writeText(HOST + router.asPath);
     let e = document.getElementById("SuccessDialog");
     e.style.display = "flex"
     setTimeout(()=>e.style.display="none", 4000)
