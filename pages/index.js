@@ -5,13 +5,13 @@ import React from 'react';
 import Editor from "../components/editor";
 import SuccessDialog from "../components/dialogs/successDialog";
 import {useRouter} from "next/router";
-import {router} from "next/client";
 
 const HOST = "http://localhost:3000";
+let router;
 
 export default function Home() {
-    const router = useRouter();
-    const link = HOST + router.asPath;
+    router = useRouter();
+    let link = HOST + router.asPath;
     return (
         <div className={styles.container}>
             <Head>
@@ -47,7 +47,7 @@ async function copyToClipboard() {
     await navigator.clipboard.writeText(HOST + router.asPath);
     let e = document.getElementById("SuccessDialog");
     e.style.display = "flex"
-    setTimeout(()=>e.style.display="none", 4000)
+    setTimeout(() => e.style.display = "none", 4000)
 }
 
 let shareTimeout;
@@ -63,5 +63,5 @@ function show() {
     }
     if (!isOpen) copyToClipboard().then()
     clearTimeout(shareTimeout)
-    shareTimeout = setTimeout(()=>e.style.display="none", 10000)
+    shareTimeout = setTimeout(() => e.style.display = "none", 10000)
 }
