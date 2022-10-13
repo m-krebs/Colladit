@@ -5,7 +5,9 @@
     border-bottom: none;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toolbar button {
