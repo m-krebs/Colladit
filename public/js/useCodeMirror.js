@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {EditorView} from "@codemirror/view";
 import {placeholder} from "@codemirror/view";
 import {EditorState} from "@codemirror/state";
@@ -21,15 +21,20 @@ export default function useCodeMirror() {
             extensions: [
                 basicSetup,
                 darcula,
-                placeholder("Share the link for collaborative editing")
+                placeholder("Share the link for collaborative editing"),
+                EditorView.updateListener.of((v) => {
+                    if (v.docChanged){
+                        console.log(view.state.doc.toString());
+                        console.log(v.transactions)
+                    }
+                })
             ],
         })
 
-        const view = new EditorView({
+        let view = new EditorView({
             state: myState,
             parent: element,
         });
-        console.log(view.state.doc)
 
         return () => view.destroy();
     }, [element]);
