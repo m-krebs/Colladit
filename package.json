@@ -3,29 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "nodemon server/index.js"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.1.0",
-    "@codemirror/state": "^6.1.2",
-    "@codemirror/view": "^6.3.1",
-    "@uiw/codemirror-theme-darcula": "^4.12.4",
-    "@uiw/react-codemirror": "^4.12.4",
-    "codemirror": "^6.0.1",
-    "next": "12.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-quill": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "18.7.23",
     "@types/react": "18.0.21",
     "autoprefixer": "^10.4.12",
-    "eslint": "8.23.1",
-    "eslint-config-next": "12.3.1",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gl.edvschule-plattling.de/trfi.bfs2020fi/mkrebs/colladit.git"
+  },
+  "author": "",
+  "license": "ISC"
 }
