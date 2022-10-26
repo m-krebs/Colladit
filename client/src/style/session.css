@@ -1,0 +1,9 @@
+.title {
+    text-align: center;
+}
+
+.s-container {
+    display: flex;
+    margin: auto;
+    text-align: center;
+}
