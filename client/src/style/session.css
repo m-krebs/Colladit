@@ -6,4 +6,48 @@
     display: flex;
     margin: auto;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.wrapper {
+    display: flex;
+    background-color: #c1c1c1;
+    border-radius: 20px;
+}
+
+.wrapper div {
+    padding: 15px 40px;
+}
+
+.exSession {
+    padding: 10px;
+}
+
+.newSession {
+    background-color: #ccc;
+    border-radius: 20px;
+    padding: 10px 30px;
+    float: right;
+    right: 0;
+    margin: 0 0 0 auto;
+}
+
+button {
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #c1c1c1;
+    margin: 5px;
+    /*margin-bottom: 20px;*/
+}
+
+button:hover {
+    background-color: gray;
+    color: white;
+}
+
+button:active {
+    color: black;
+    background-color: white;
 }
