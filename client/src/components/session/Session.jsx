@@ -23,9 +23,7 @@ function links() {
         </button>
       </div>
     </div>
-  </div>);} else {
-    return <div></div>
-  }
+  </div>);}
 }
 
 function Session() {
