@@ -7,7 +7,8 @@ function Navigation() {
       <div className="navigation">
         <NavLink className="navbar-title" to="/">Home</NavLink>
         <div className="nav-right">
-          <NavLink to="/session">Editor</NavLink>
+          {/*<NavLink to={"/session"}>Editor</NavLink>*/}
+          <a href={document.location.origin+"/session"}>Editor</a>
         </div>
       </div>
   );
