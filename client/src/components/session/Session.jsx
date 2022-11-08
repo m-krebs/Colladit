@@ -19,7 +19,9 @@ function links() {
         <button onClick={function() {
           window.open(window.location.origin + '/session/' + uuid(),
               '_self');
-        }}>CREATE
+          // fetch server
+        }
+        }>CREATE
         </button>
       </div>
     </div>
