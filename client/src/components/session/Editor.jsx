@@ -12,5 +12,5 @@ export default function Editor() {
   let { sessionSlug } = useParams();
   const [value, setValue] = useState('');
 
-  return <div className={'quill-container'}><a href={'http://localhost:3001/session?id=' + sessionSlug} target={'_blank'} rel={'noopener noreferrer'}><p>{sessionSlug}</p></a><ReactQuill theme="snow" value={value} onChange={setValue} modules={modules}/></div>;
+  return <div className={'quill-container'}><a href={'http://localhost:3001/api/session?id=' + sessionSlug} target={'_blank'} rel={'noopener noreferrer'}><p>{sessionSlug}</p></a><ReactQuill theme="snow" value={value} onChange={setValue} modules={modules}/></div>;
 }
