@@ -3,21 +3,32 @@ import {DataStore} from './dataStore.js';
 import {sessions} from './dataStore.js';
 import cors from 'cors';
 import {WebSocketServer} from 'ws';
+import {v4} from 'uuid';
+import {parse} from 'url';
+
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
 // Headless websocket server that prints any incoming event
-const wss = new WebSocketServer({port:8080});
-wss.on('connection', socket => {
-  socket.on('message', message => console.log('received: %s', message));
-});
 
-const server = app.listen(3002);
-server.on('upgrade', (request, socket, head) => {
-  wss.handleUpgrade(request, socket, head, socket => {
-    wss.emit('connection', socket, request);
+const wss = new WebSocketServer({port: 8080});
+wss.on('connection', (ws, req)=>{
+  const parameters = parse(req.url, true);
+  ws.suid = parameters.query.uuid;
+  ws.cuid = v4();
+  ws.on('message', (data)=>{
+    console.log('received: %s', data);
+    let cnt = 0;
+    wss.clients.forEach((c)=>{
+      if (c.suid===ws.suid && c.cuid !== ws.cuid){
+        console.log("WHY: " + data);
+        cnt++;
+        console.log("send %s times", cnt);
+        c.send(data.toString());
+      }
+    });
   });
 });
 
@@ -25,6 +36,11 @@ app.use(express.text());
 app.use(cors({
   origin: 'http://localhost:3000',
 }));
+
+app.get('/api/clients', (req, res) => {
+  wss.clients.forEach(c=>console.log(c));
+  res.sendStatus(200);
+})
 
 app.get('/api/sessions', (req, res) => {
   res.send(sessions);
