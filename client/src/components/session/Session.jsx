@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Outlet} from 'react-router-dom';
 import '../../style/session.css';
 import {v4} from 'uuid';
 
 function joinExSession() {
-  let url = document.getElementById("url").value;
-  if(url.includes('/')) {
-    console.log("is with slash: " + url)
+  let url = document.getElementById('url').value;
+  if (url.includes('/')) {
+    console.log('is with slash: ' + url);
     window.open(url, '_self');
   } else {
-    console.log("is only uuid: " + url)
+    console.log('is only uuid: ' + url);
     window.open(window.location.origin + '/session/' + url, '_self');
   }
 }
@@ -24,6 +24,7 @@ function createNewSession() {
 }
 
 function links() {
+
   // if ((document.location.href).substring(document.location.origin.length) ===
   //     '/session') {
   return (<div className={'s-container'}>
@@ -33,11 +34,11 @@ function links() {
         <label htmlFor="url">Paste link or session-ID: </label>
         <br/>
         <input id="url" type={'text'}/>
-        <button onClick={joinExSession}>Send</button>
+        <button id={'go'} onClick={joinExSession}>Go</button>
       </div>
       <div className={'newSession'}>
         <h3>New Session</h3>
-        <button onClick={
+        <button className={'btnNS'} onClick={
           createNewSession
         }>CREATE
         </button>
@@ -48,6 +49,15 @@ function links() {
 }
 
 function Session() {
+  useEffect(() => {
+    let urlInput = document.getElementById('url');
+    urlInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById('go').click();
+      }
+    });
+  });
   return (
       <div className="home">
         <div className="container">

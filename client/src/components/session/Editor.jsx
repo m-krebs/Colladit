@@ -31,8 +31,8 @@ export default function Editor() {
 
   function handleEditChanges(e) {
     console.log('send: ' + e);
-    setValue(e);
     ws.send(e);
+    setValue(e);
   }
 
   return <div className={'quill-container'}>
