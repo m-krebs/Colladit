@@ -2,6 +2,12 @@
     text-align: center;
 }
 
+#url {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
 .s-container {
     display: flex;
     margin: auto;
@@ -35,19 +41,20 @@
 }
 
 button {
+    border-radius: 5px;
     background-color: white;
     padding: 5px;
-    border: 1px solid #c1c1c1;
+    border: none;
     margin: 5px;
     /*margin-bottom: 20px;*/
 }
 
-button:hover {
-    background-color: gray;
+button {
     color: white;
+    background-color: #546cbc;
 }
 
-button:active {
-    color: black;
-    background-color: white;
+button:hover {
+    background-color: #203d9d;
+    transform: scale(1.05, 1.05);
 }
