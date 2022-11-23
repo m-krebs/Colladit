@@ -8,6 +8,16 @@
     border-radius: 5px;
 }
 
+.err {
+    background: #ffe6ee;
+    border: 1px solid #b1395f;
+}
+
+.emsg {
+    color: #c12020;
+    font-weight: bold;
+}
+
 .s-container {
     display: flex;
     margin: auto;

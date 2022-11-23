@@ -5,3 +5,9 @@
 .ql-editor {
     min-height: 600px;
 }
+
+.notValid {
+    text-align: center;
+    font-size: 50px;
+    color: #c12020;
+}
