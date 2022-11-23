@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../../style/editor.css';
+import { validate } from 'uuid';
 
 const modules = {
   toolbar: [
@@ -15,19 +16,27 @@ const modules = {
       {'direction': 'ctl'},
       {'direction': 'rtl'}]],
 };
+let valid = true;
 
-const ws = new WebSocket('ws://localhost:8080?uuid=' +
-    window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
-ws.addEventListener('open', () => {
-  ws.send('');
-});
+let ws;
+if (validate(window.location.href.substring(window.location.href.lastIndexOf('/') + 1))) {
+   ws = new WebSocket('ws://localhost:8080?uuid=' +
+      window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
+  ws.addEventListener('open', () => {
+    ws.send('');
+  });
+} else {
+  valid = false;
+}
 
-export default function Editor() {
+function Editor() {
+  const [value, setValue] = useState('');
+  if (!valid) return <div><p className={'notValid'}>URL not valid</p></div>
   ws.onmessage = (event) => {
     console.log('received: ' + event.data);
     setValue(event.data);
   };
-  const [value, setValue] = useState('');
+
 
   function handleEditChanges(e) {
     console.log('send: ' + e);
@@ -40,3 +49,5 @@ export default function Editor() {
                 modules={modules} value={value} onChange={handleEditChanges}/>
   </div>;
 }
+
+export default Editor;
