@@ -12,8 +12,6 @@ const modules = {
       'italic',
       'underline'],
     [
-      {'direction': 'ltl'},
-      {'direction': 'ctl'},
       {'direction': 'rtl'}]],
 };
 let valid = true;
@@ -21,7 +19,7 @@ let valid = true;
 let ws;
 if (validate(window.location.href.substring(
     window.location.href.lastIndexOf('/') + 1))) {
-  ws = new WebSocket('ws://localhost:8080?uuid=' +
+  ws = new WebSocket('ws://10.0.206.4:8080?uuid=' +
       window.location.href.substring(
           window.location.href.lastIndexOf('/') + 1));
   ws.addEventListener('open', () => {
@@ -29,6 +27,13 @@ if (validate(window.location.href.substring(
   });
 } else {
   valid = false;
+}
+
+async function copyUrlToClipboard() {
+  await navigator.clipboard.writeText(window.location.href);
+  let obj = document.getElementById("tn-box");
+  obj.style.display = "block";
+  obj.style.opacity = "100%";
 }
 
 function Editor() {
@@ -46,7 +51,12 @@ function Editor() {
   }
 
   return <div className={'quill-container'}>
-    <div ></div>
+    <div className={"opt-container"}><button onClick={copyUrlToClipboard}>Share this session</button>
+    <div id={"tn-box"} className={"tn-box tn-box-color-1"}>
+      <p>Copied URL</p>
+      <div className={"tn-progress"}></div>
+    </div>
+    </div>
     <ReactQuill theme="snow"
                 modules={modules} value={value} onChange={handleEditChanges}/>
   </div>;
