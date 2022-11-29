@@ -31,9 +31,7 @@ if (validate(window.location.href.substring(
 
 async function copyUrlToClipboard() {
   await navigator.clipboard.writeText(window.location.href);
-  let obj = document.getElementById("tn-box");
-  obj.style.display = "block";
-  obj.style.opacity = "100%";
+  alert('copied url to clipboard');
 }
 
 function Editor() {
@@ -50,14 +48,37 @@ function Editor() {
     setValue(e);
   }
 
+  function downloadTxt() {
+
+    console.log();
+    let filename = window.prompt('Enter the filename', 'MyFileName');
+    if (filename == null) return;
+    if (filename === '' || filename === 'MyFileName') {
+      let tstmp = new Date(Date.now());
+      filename = `colladit_${tstmp.getDate()}-${tstmp.getMonth() +
+      1}-${tstmp.getFullYear()} ${tstmp.getHours()}-${tstmp.getMinutes()}.txt`;
+    } else {
+      filename = filename + '.txt';
+    }
+
+    let a = window.document.createElement('a');
+    a.href = window.URL.createObjectURL(
+        new Blob([document.getElementById('r-quill').innerText], {type: 'text/text'}));
+
+    a.download = filename;
+
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+  }
+
   return <div className={'quill-container'}>
-    <div className={"opt-container"}><button onClick={copyUrlToClipboard}>Share this session</button>
-    <div id={"tn-box"} className={"tn-box tn-box-color-1"}>
-      <p>Copied URL</p>
-      <div className={"tn-progress"}></div>
+    <div className={'opt-container'}>
+      <button onClick={copyUrlToClipboard} className={'s-btn'}>Share this session</button>
+      <button onClick={downloadTxt} className={'s-btn'} style={{float: 'right'}}>Download as .txt</button>
     </div>
-    </div>
-    <ReactQuill theme="snow"
+    <ReactQuill id={"r-quill"} theme="snow"
                 modules={modules} value={value} onChange={handleEditChanges}/>
   </div>;
 }
