@@ -4,11 +4,10 @@ import '../style/navigation.css';
 
 function Navigation() {
   return (
-      <div className="navigation">
-        <NavLink className="navbar-title" to="/">Home</NavLink>
-        <div className="nav-right">
-          {/*<NavLink to={"/session"}>Editor</NavLink>*/}
-          <a href={document.location.origin+"/session"}>Editor</a>
+      <div className='navigation'>
+        <NavLink className='navbar-title' to='/'>Home</NavLink>
+        <div className='nav-right'>
+          <a href={document.location.origin + '/session'}>Editor</a>
         </div>
       </div>
   );

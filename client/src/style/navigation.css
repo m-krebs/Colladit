@@ -1,12 +1,16 @@
 .navigation {
     background-color: black;
-    padding: 10px 20px;
+    padding: 10px 40px;
 }
 
 .navigation a {
     text-decoration: none;
     font-size: 2em;
     color: white;
+}
+
+.navigation a:hover {
+    color: #949494;
 }
 
 .nav-right {
