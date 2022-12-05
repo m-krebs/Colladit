@@ -6,12 +6,8 @@ import {validate} from 'uuid';
 
 const modules = {
   toolbar: [
-    [{'font': ['arial']}],
-    [
-      'bold',
-      'italic',
-      'underline'],
-    [
+    [{'font': ['arial']}], [
+      'bold', 'italic', 'underline'], [
       {'direction': 'rtl'}]],
 };
 let valid = true;
@@ -43,7 +39,6 @@ function Editor() {
   };
 
   function handleEditChanges(e) {
-    console.log('send: ' + e);
     ws.send(e);
     setValue(e);
   }
@@ -63,7 +58,8 @@ function Editor() {
 
     let a = window.document.createElement('a');
     a.href = window.URL.createObjectURL(
-        new Blob([document.getElementById('r-quill').innerText], {type: 'text/text'}));
+        new Blob([document.getElementById('r-quill').innerText],
+            {type: 'text/text'}));
 
     a.download = filename;
 
@@ -75,10 +71,14 @@ function Editor() {
 
   return <div className={'quill-container'}>
     <div className={'opt-container'}>
-      <button onClick={copyUrlToClipboard} className={'s-btn'}>Share this session</button>
-      <button onClick={downloadTxt} className={'s-btn'} style={{float: 'right'}}>Download as .txt</button>
+      <button onClick={copyUrlToClipboard} className={'s-btn'}>Share this
+        session
+      </button>
+      <button onClick={downloadTxt} className={'s-btn'}
+              style={{float: 'right'}}>Download as .txt
+      </button>
     </div>
-    <ReactQuill id={"r-quill"} theme="snow"
+    <ReactQuill id={'r-quill'} theme='snow'
                 modules={modules} value={value} onChange={handleEditChanges}/>
   </div>;
 }

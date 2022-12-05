@@ -4,6 +4,11 @@
 
 .ql-editor {
     min-height: 600px;
+    height: 750px;
+}
+
+.ql-editor p {
+    white-space: pre;
 }
 
 .notValid {
