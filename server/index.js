@@ -11,12 +11,12 @@ wss.on('connection', (ws, req) => {
   ws.suid = parameters.query.uuid;
   ws.cuid = v4();
   ws.on('message', (data) => {
-    let undef = lastChange.find(c => c.suid === ws.suid) === undefined;
+    let search = lastChange.find(c => c.suid === ws.suid);
     if (data.toString() === '') {
-      if (undef) return;
-      ws.send(lastChange.find(c => c.suid).content);
+      if (search===undefined) return;
+      ws.send(search.content);
     } else {
-      if (undef) lastChange.push({suid: ws.suid, content: data.toString()});
+      if (search===undefined) lastChange.push({suid: ws.suid, content: data.toString()});
       else {
         for (const obj of lastChange) {
           if (obj.suid === ws.suid) {
