@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../../style/editor.css';
 import {validate} from 'uuid';
 
+const Font = Quill.import('formats/font');
+Font.whitelist = ['mirza', 'comic'];
+Quill.register(Font, true);
+
 const modules = {
   toolbar: [
-    [{'font': ['arial']}], [
+    [{'font': Font.whitelist}], [
       'bold', 'italic', 'underline'], [
       {'direction': 'rtl'}]],
 };
@@ -69,18 +73,22 @@ function Editor() {
     document.body.removeChild(a);
   }
 
-  return <div className={'quill-container'}>
+  return <><div className={'quill-container'}>
     <div className={'opt-container'}>
       <button onClick={copyUrlToClipboard} className={'s-btn'}>Share this
         session
       </button>
       <button onClick={downloadTxt} className={'s-btn'}
-              style={{float: 'right'}}>Download as .txt
+              style={{float: 'right'}}><>Download text<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                              width="12" height="12"
+                                                              viewBox="0 0 50 50">
+        <path d="M 7 2 L 7 48 L 43 48 L 43 14.59375 L 42.71875 14.28125 L 30.71875 2.28125 L 30.40625 2 Z M 9 4 L 29 4 L 29 16 L 41 16 L 41 46 L 9 46 Z M 31 5.4375 L 39.5625 14 L 31 14 Z M 15 22 L 15 24 L 35 24 L 35 22 Z M 15 28 L 15 30 L 31 30 L 31 28 Z M 15 34 L 15 36 L 35 36 L 35 34 Z"></path>
+      </svg></>
       </button>
     </div>
     <ReactQuill id={'r-quill'} theme='snow'
                 modules={modules} value={value} onChange={handleEditChanges}/>
-  </div>;
+  </div></>;
 }
 
 export default Editor;

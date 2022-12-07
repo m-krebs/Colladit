@@ -3,6 +3,7 @@
 }
 
 .ql-editor {
+    font-family: "Comic Sans MS", serif;
     min-height: 600px;
     height: 750px;
 }
@@ -29,4 +30,19 @@
 
 .s-btn:hover {
     transform: none;
+}
+
+/**/
+
+
+.ql-picker.ql-font .ql-picker-label[data-value="comic"]::before,
+.ql-picker.ql-font .ql-picker-item[data-value="comic"]::before
+{
+    font-family: "Comic Sans MS", serif;
+    content: "Comic Sans MS";
+}
+
+
+.ql-font-mirza {
+    font-family: "Comic Sans MS", serif;
 }
