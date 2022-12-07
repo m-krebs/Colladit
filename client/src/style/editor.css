@@ -3,7 +3,7 @@
 }
 
 .ql-editor {
-    font-family: "Comic Sans MS", serif;
+    font-family: 'Comic Sans MS', serif;
     min-height: 600px;
     height: 750px;
 }
@@ -32,17 +32,154 @@
     transform: none;
 }
 
-/**/
-
-
-.ql-picker.ql-font .ql-picker-label[data-value="comic"]::before,
-.ql-picker.ql-font .ql-picker-item[data-value="comic"]::before
-{
-    font-family: "Comic Sans MS", serif;
-    content: "Comic Sans MS";
+.ql-snow .ql-font.ql-picker {
+    width: 150px;
 }
 
+/* ################# BEGIN OF FONTS #################### */
 
-.ql-font-mirza {
-    font-family: "Comic Sans MS", serif;
+.ql-picker.ql-font .ql-picker-label[data-value='helvn']::before,
+.ql-picker.ql-font .ql-picker-item[data-value='helvn']::before {
+    font-family: Helvetica, Arial, sans-serif;
+    content: 'Helva';
 }
+
+.ql-font-helvn {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value='comic']::before,
+.ql-picker.ql-font .ql-picker-item[data-value='comic']::before {
+    font-family: 'Comic Sans MS', serif;
+    content: 'Comic Sans MS';
+}
+
+.ql-font-comic {
+    font-family: 'Comic Sans MS', serif;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value='sansserif']::before,
+.ql-picker.ql-font .ql-picker-item[data-value='sansserif']::before {
+    font-family: 'Sans Serif', serif;
+    content: 'Sans Serif';
+}
+
+.ql-font-sansserif {
+    font-family: 'Sans Serif', serif;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value='arial']::before,
+.ql-picker.ql-font .ql-picker-item[data-value='arial']::before {
+    font-family: 'Arial', serif;
+    content: 'Arial';
+}
+
+.ql-font-arial {
+    font-family: 'Arial', serif;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value='helve']::before,
+.ql-picker.ql-font .ql-picker-item[data-value='helve']::before {
+    font-family: 'Helvetica', serif;
+    content: 'Helvetica';
+}
+
+.ql-font-helve {
+    font-family: 'Helvetica', serif;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value='verda']::before,
+.ql-picker.ql-font .ql-picker-item[data-value='verda']::before {
+    font-family: 'Verdana', serif;
+    content: 'Verdana';
+}
+
+.ql-font-verda {
+    font-family: 'Verdana', serif;
+}
+
+/* ################## END OF FONTS ################### */
+
+/* ################ BEGIN OF FONTSIZE ################ */
+.ql-picker.ql-size .ql-picker-label[data-value='8px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='8px']::before {
+    content: '8px';
+}
+
+.ql-size-8px {
+    font-size: 8px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='10px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='10px']::before {
+    content: '10px';
+}
+
+.ql-size-10px {
+    font-size: 10px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='12px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='12px']::before {
+    content: '12px';
+}
+
+.ql-size-12px {
+    font-size: 12px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='14px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='14px']::before {
+    content: '14px';
+}
+
+.ql-size-14px {
+    font-size: 14px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='16px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='16px']::before {
+    content: '16px';
+}
+
+.ql-size-16px {
+    font-size: 16px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='18px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='18px']::before {
+    content: '18px';
+}
+
+.ql-size-18px {
+    font-size: 18px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='20px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='20px']::before {
+    content: '20px';
+}
+
+.ql-size-20px {
+    font-size: 20px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='24px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='24px']::before {
+    content: '24px';
+}
+
+.ql-size-24px {
+    font-size: 24px;
+}
+
+.ql-picker.ql-size .ql-picker-label[data-value='48px']::before,
+.ql-picker.ql-size .ql-picker-item[data-value='48px']::before {
+    content: '48px';
+}
+
+.ql-size-48px {
+    font-size: 48px;
+}
+
+/* ################# END OF FONTSIZE ################# */
