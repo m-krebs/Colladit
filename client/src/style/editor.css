@@ -3,13 +3,8 @@
 }
 
 .ql-editor {
-    font-family: 'Comic Sans MS', serif;
     min-height: 600px;
     height: 750px;
-}
-
-.ql-editor p {
-    white-space: pre;
 }
 
 .notValid {
@@ -38,13 +33,13 @@
 
 /* ################# BEGIN OF FONTS #################### */
 
-.ql-picker.ql-font .ql-picker-label[data-value='helvn']::before,
-.ql-picker.ql-font .ql-picker-item[data-value='helvn']::before {
-    font-family: Helvetica, Arial, sans-serif;
-    content: 'Helva';
+.ql-picker.ql-font .ql-picker-label[data-value='helve']::before,
+.ql-picker.ql-font .ql-picker-item[data-value='helve']::before {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    content: 'Helvetica';
 }
 
-.ql-font-helvn {
+.ql-font-helve {
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -76,16 +71,6 @@
 
 .ql-font-arial {
     font-family: 'Arial', serif;
-}
-
-.ql-picker.ql-font .ql-picker-label[data-value='helve']::before,
-.ql-picker.ql-font .ql-picker-item[data-value='helve']::before {
-    font-family: 'Helvetica', serif;
-    content: 'Helvetica';
-}
-
-.ql-font-helve {
-    font-family: 'Helvetica', serif;
 }
 
 .ql-picker.ql-font .ql-picker-label[data-value='verda']::before,

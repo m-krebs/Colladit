@@ -4,9 +4,17 @@ import 'react-quill/dist/quill.snow.css';
 import '../../style/editor.css';
 import {validate} from 'uuid';
 
+class PreserveWhiteSpace {
+  constructor(quill) {
+    quill.container.style.whiteSpace = 'pre-line';
+  }
+}
+
+Quill.register('modules/preserveWhiteSpace', PreserveWhiteSpace);
+
 const Font = Quill.import('formats/font');
 const Size = Quill.import('attributors/style/size');
-Font.whitelist = ['helvn', 'arial', 'sansserif', 'comic', 'helve', 'verda'];
+Font.whitelist = ['helve', 'arial', 'sansserif', 'comic', 'verda'];
 Size.whitelist = [
   '8px', '10px', '12px', '14px', '16px', '18px', '20px', '24px', '48px'];
 Quill.register(Font, true);
@@ -14,9 +22,12 @@ Quill.register(Size, true);
 
 const modules = {
   toolbar: [
-    [{'font': Font.whitelist}], [{'size': Size.whitelist}], [
-      'bold', 'italic', 'underline'], [
-      {'direction': 'rtl'}]],
+    [{'font': Font.whitelist}],
+    [{'size': Size.whitelist}],
+    [{'color': ['Yellow', 'Green', 'Blue', 'Violet', 'Red', 'Orange']}],
+    ['bold', 'italic', 'underline'],
+    [
+      {'align': ['center', 'right']}], ['code-block']],
 };
 let valid = true;
 
@@ -95,7 +106,8 @@ function Editor() {
         </button>
       </div>
       <ReactQuill id={'r-quill'} theme='snow'
-                  modules={modules} value={value} onChange={handleEditChanges}/>
+                  modules={modules} value={value} onChange={handleEditChanges}
+                  preserveWhitespace={true}/>
     </div>
   </>;
 }

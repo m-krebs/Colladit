@@ -31,7 +31,7 @@ function checkInSession() {
           <h3>Existing Session</h3>
           <label htmlFor='url'>Paste session-ID: </label>
           <br/>
-          <input id='url' type={'text'}/>
+          <input id='url' type={'text'} value={'33eba49c-ee59-4b1c-94f4-410db84e65d3'}/>
           <button id={'go'} onClick={joinExSession}>Go</button>
           <div id={'cname'} className={'emsg'}></div>
         </div>
