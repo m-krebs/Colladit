@@ -27,7 +27,7 @@ const modules = {
     [{'color': ['Yellow', 'Green', 'Blue', 'Violet', 'Red', 'Orange']}],
     ['bold', 'italic', 'underline'],
     [
-      {'align': ['center', 'right']}], ['code-block']],
+      {'align': ''}, {'align':'center'},{'align':'right'}]],
 };
 let valid = true;
 
@@ -58,8 +58,11 @@ function Editor() {
   };
 
   function handleEditChanges(e) {
-    ws.send(e);
+    let nLine = "<p><br></p>";
     setValue(e);
+    e = e.slice(-11)===nLine?e+nLine:e;
+    console.log('sendinig: '+e)
+    ws.send(e);
   }
 
   function downloadTxt() {
