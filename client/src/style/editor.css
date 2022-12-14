@@ -43,7 +43,7 @@
 
 .ql-picker.ql-font .ql-picker-label[data-value='helve']::before,
 .ql-picker.ql-font .ql-picker-item[data-value='helve']::before {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     content: 'Helvetica';
 }
 
