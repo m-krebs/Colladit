@@ -2,6 +2,7 @@ import {WebSocketServer} from 'ws';
 import {v4} from 'uuid';
 import {parse} from 'url';
 
+import express from 'express';
 const wss = new WebSocketServer({port: 8080});
 
 let lastChange = [{suid: '', content: ''}];
@@ -31,4 +32,24 @@ wss.on('connection', (ws, req) => {
       });
     }
   });
+});
+
+const app = express();
+app.use(express.json());
+const port = 3001;
+
+app.get('/api/sessions', (req, res) => {
+  let clientObject = []
+  wss.clients.forEach((w)=>{
+    let s = w.suid;
+    clientObject.push({[s] : []});
+    console.log(clientObject[s]);
+    // clientObject[s].push(w.cuid)
+  });
+  console.log(clientObject)
+  res.json(clientObject);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });

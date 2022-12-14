@@ -11,6 +11,7 @@ import {
   Home,
   Session,
   Editor,
+  SessionList,
 } from './components';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,9 +19,10 @@ root.render(
     <Router>
       <Navigation/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/session" element={<Session/>}>
-          <Route path=":sessionSlug" element={<Editor/>}/>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/session' element={<Session/>}>
+          <Route path=':sessionSlug' element={<Editor/>}/>
+          <Route path={'/session/all'} element={<SessionList/>}/>
         </Route>
       </Routes>
     </Router>,
