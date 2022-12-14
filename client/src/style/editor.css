@@ -27,6 +27,14 @@
     transform: none;
 }
 
+.r-btn {
+    padding: 9px 25px;
+}
+
+.r-btn svg {
+    filter: invert(1);
+}
+
 .ql-snow .ql-font.ql-picker {
     width: 150px;
 }
