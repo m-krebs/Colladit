@@ -1,14 +1,39 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 function SessionList() {
+  const [sessions, setSessions] = useState([]);
+
+  useEffect(() => {
+    async function fetchSessions() {
+      try {
+        const response = await fetch('/api/sessions');
+        const data = await response.json();
+        setSessions(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchSessions();
+  }, []);
   return (
       <div className='home'>
         <div className='container'>
-          {()=>{return(
-            <div>hello pls help me i am under the water</div>
-          )
-          }}
-          <div>hello pls help me i am under the water</div>
+          <table>
+            <thead>
+            <tr>
+              <th id={'suid'}>Suid</th>
+              <th id={'count'}>Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            {sessions.map(session => (
+                <tr key={session.suid}>
+                  <td><a href={`${window.location.origin}/session/${session.suid}`}>{session.suid}</a></td>
+                  <td>{session.cuids.length}</td>
+                </tr>
+            ))}
+            </tbody>
+          </table>
         </div>
       </div>
   );
