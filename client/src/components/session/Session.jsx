@@ -16,10 +16,18 @@ function joinExSession() {
   }
 }
 
-function createNewSession() {
+async function createNewSession() {
   let uuid = v4();
-  window.open(window.location.origin + '/session/' + uuid,
-      '_self');
+  let overlay = document.createElement('div');
+  let loader = document.createElement('div');
+  overlay.className += 'overlay';
+  loader.className += 'loader';
+  overlay.appendChild(loader);
+  document.body.appendChild(overlay);
+  setTimeout(() => {
+    window.open(window.location.origin + '/session/' + uuid,
+        '_self');
+  }, 500);
 }
 
 function checkInSession() {
@@ -48,8 +56,9 @@ function checkInSession() {
 }
 
 function Session() {
+
   return (
-      <div className='home'>
+      <div className='home' id={'home'}>
         <div className='container'>
           {checkInSession()}
           <Outlet/>
