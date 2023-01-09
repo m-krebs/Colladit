@@ -1,0 +1,39 @@
+= Kollaborativer Text-Editor
+:toc: left
+:toc-title: Inhaltsverzeichnis
+
+Michael Krebs
+
+EDV-Schulen des Landkreises Deggendorf in Plattling
+
+<<<
+
+== Einleitung
+
+=== Ziele
+
+Es soll ein Texteditor entwickelt werden, in dem mehrere Personen über denselben Link, gleichzeitig eine Textdatei bearbeiten können.
+
+=== Allgemeine Umsetzung
+
+== Soll-Zustand
+
+=== Programmiersprache/Entwicklungsumgebung
+
+Als Programmiersprache standen PHP und Javascript zur Verfügung, wobei JavaScript ausgewählt wurde
+
+=== Verwendete Bibliotheken
+
+=== Tests
+
+=== User Interface
+
+=== Quellen
+
+== Anhang
+
+=== Glossar
+
+=== Diagramme
+
+=== Extra-Code
