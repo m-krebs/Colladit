@@ -4,19 +4,19 @@ import 'react-quill/dist/quill.snow.css';
 import '../../style/editor.css';
 import {validate} from 'uuid';
 
+// Configure quill editor options
 class PreserveWhiteSpace {
   constructor(quill) {
     quill.container.style.whiteSpace = 'pre-line';
   }
 }
 
-Quill.register('modules/preserveWhiteSpace', PreserveWhiteSpace);
-
 const Font = Quill.import('formats/font');
 const Size = Quill.import('attributors/style/size');
 Font.whitelist = ['helve', 'arial', 'sansserif', 'comic', 'verda'];
 Size.whitelist = [
   '8px', '10px', '12px', '14px', '16px', '18px', '20px', '24px', '48px'];
+Quill.register('modules/preserveWhiteSpace', PreserveWhiteSpace);
 Quill.register(Font, true);
 Quill.register(Size, true);
 
@@ -29,8 +29,8 @@ const modules = {
     [
       {'align': ''}, {'align': 'center'}, {'align': 'right'}]],
 };
-let valid = true;
 
+let isUrlValid = true;
 let ws;
 if (validate(window.location.href.substring(
     window.location.href.lastIndexOf('/') + 1))) {
@@ -41,9 +41,10 @@ if (validate(window.location.href.substring(
     ws.send('');
   });
 } else {
-  valid = false;
+  isUrlValid = false;
 }
 
+// handler for copy_url button
 async function copyUrlToClipboard() {
   await navigator.clipboard.writeText(window.location.href);
   alert('copied url to clipboard');
@@ -51,44 +52,47 @@ async function copyUrlToClipboard() {
 
 function Editor() {
   const [value, setValue] = useState('');
-  if (!valid) return <div><p className={'notValid'}>URL not valid</p></div>;
+  // Checks URL; if not valid renders div with error
+  if (!isUrlValid) return <div><p className={'notValid'}>URL not valid</p>
+  </div>;
   ws.onmessage = (event) => {
     console.log('received: ' + event.data);
     setValue(event.data);
   };
 
-  function handleEditChanges(e) {
-    let nLine = '<p><br></p>';
-    setValue(e);
-    e = e.slice(-11) === nLine ? e + nLine : e;
-    console.log('sendinig: ' + e);
-    ws.send(e);
-  }
 
+  // Download
   function downloadTxt() {
-
-    console.log();
+    // Define Filename
     let filename = window.prompt('Enter the filename', 'MyFileName');
     if (filename == null) return;
     if (filename === '' || filename === 'MyFileName') {
-      let tstmp = new Date(Date.now());
-      filename = `colladit_${tstmp.getDate()}-${tstmp.getMonth() +
-      1}-${tstmp.getFullYear()} ${tstmp.getHours()}-${tstmp.getMinutes()}.txt`;
+      let timestamp = new Date(Date.now());
+      filename = `colladit_${timestamp.getDate()}-${timestamp.getMonth() +
+      1}-${timestamp.getFullYear()} ${timestamp.getHours()}-${timestamp.getMinutes()}.txt`;
     } else {
       filename = filename + '.txt';
     }
 
-    let a = window.document.createElement('a');
-    a.href = window.URL.createObjectURL(
+    // Create Temporary Link to download the text
+    let anchorElement = window.document.createElement('a');
+    anchorElement.href = window.URL.createObjectURL(
         new Blob([document.getElementById('r-quill').innerText],
             {type: 'text/text'}));
+    anchorElement.download = filename;
+    console.log(anchorElement.href);
 
-    a.download = filename;
+    document.body.appendChild(anchorElement);
+    anchorElement.click();
+    document.body.removeChild(anchorElement);
+  }
 
-    document.body.appendChild(a);
-    a.click();
-
-    document.body.removeChild(a);
+  function handleEditChanges(change) {
+    let nLine = '<p><br></p>';
+    setValue(change);
+    // Append new line if user presses Enter
+    change = change.slice(-11) === nLine ? change + nLine : change;
+    ws.send(change);
   }
 
   return <>

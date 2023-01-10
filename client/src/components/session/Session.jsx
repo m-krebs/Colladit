@@ -3,6 +3,7 @@ import {Outlet} from 'react-router-dom';
 import '../../style/session.css';
 import {v4, validate} from 'uuid';
 
+// Joins existing Sessions
 function joinExSession() {
   let input = document.getElementById('url');
   let error = document.getElementById('cname');
@@ -41,7 +42,7 @@ function checkInSession() {
           <br/>
           <input id='url' type={'text'}/>
           <button id={'go'} onClick={joinExSession}>Go</button>
-          <div id={'cname'} className={'emsg'}></div>
+          <div id={'cname'} className={'eMsg'}></div>
         </div>
         <div className={'newSession'}>
           <h3>New Session</h3>
@@ -56,11 +57,11 @@ function checkInSession() {
 }
 
 function Session() {
-
   return (
       <div className='home' id={'home'}>
         <div className='container'>
           {checkInSession()}
+          {/* Outlet renders children routes */}
           <Outlet/>
         </div>
       </div>

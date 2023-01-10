@@ -13,7 +13,7 @@
     border: 1px solid #b1395f;
 }
 
-.emsg {
+.eMsg {
     color: #c12020;
     font-weight: bold;
 }
@@ -57,16 +57,11 @@
 
 button {
     border-radius: 5px;
-    background-color: white;
+    color: white;
+    background-color: #546cbc;
     padding: 5px;
     border: none;
     margin: 5px;
-    /*margin-bottom: 20px;*/
-}
-
-button {
-    color: white;
-    background-color: #546cbc;
 }
 
 button:hover {
@@ -75,8 +70,8 @@ button:hover {
 }
 
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #000000; /* Blue */
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #000000;
     border-radius: 50%;
     width: 72px;
     height: 72px;
