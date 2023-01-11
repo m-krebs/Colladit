@@ -34,12 +34,16 @@ let isUrlValid = true;
 let ws;
 if (validate(window.location.href.substring(
     window.location.href.lastIndexOf('/') + 1))) {
-  ws = new WebSocket('ws://10.0.206.4:8080?uuid=' +
-      window.location.href.substring(
-          window.location.href.lastIndexOf('/') + 1));
-  ws.addEventListener('open', () => {
-    ws.send('');
-  });
+  try {
+    ws = new WebSocket('ws://10.0.206.4:8080?uuid=' +
+        window.location.href.substring(
+            window.location.href.lastIndexOf('/') + 1));
+    ws.addEventListener('open', () => {
+      ws.send('');
+    });
+  } catch (e) {
+    console.warn('Connection error')
+  }
 } else {
   isUrlValid = false;
 }
@@ -59,7 +63,6 @@ function Editor() {
     console.log('received: ' + event.data);
     setValue(event.data);
   };
-
 
   // Download
   function downloadTxt() {

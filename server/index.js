@@ -3,13 +3,17 @@ import {v4} from 'uuid';
 import {parse} from 'url';
 import cors from 'cors';
 import express from 'express';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200
+  origin: process.env.REACT_MACHINE,
+  optionsSuccessStatus: 200,
 };
 
-const wss = new WebSocketServer({port: 8080});
+const socketPort = process.env.SOCKET_PORT;
+const wss = new WebSocketServer({port: socketPort});
 
 let lastChange = [{suid: '', content: ''}];
 
@@ -43,20 +47,19 @@ wss.on('connection', (ws, req) => {
 
 const app = express();
 app.use(express.json());
-const port = 3001;
+const port = process.env.PORT;
 
 app.get('/api/sessions', (req, res) => {
-  let clientObject = [];
+  let clients = [];
   wss.clients.forEach(object => {
-    const client = clientObject.find(client => client.suid === object.suid);
+    const client = clients.find(client => client.suid === object.suid);
     if (client) {
       client.cuids.push(object.cuid);
     } else {
-      clientObject.push({ suid: object.suid, cuids: [object.cuid] });
+      clients.push({suid: object.suid, cuids: [object.cuid]});
     }
   });
-  console.log(clientObject);
-  res.json(clientObject);
+  res.json(clients);
 });
 
 app.use(cors(corsOptions));
