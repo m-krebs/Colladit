@@ -5,12 +5,9 @@ This is a Repository for my Project
 ## Prepare
 
 After you cloned the repo, you have to install the node dependencies:
-```bash
-npm isntal yarn # yes, that works. Thank you npm
-```
 
 ```bash
-yarn isntal # yes, that works. Thank you npm
+npm isntal # yes, that works. Thank you npm
 ```
 ## Getting Started
 
