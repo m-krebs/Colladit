@@ -3,7 +3,6 @@ import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../../style/editor.css';
 import {validate} from 'uuid';
-import * as dotenv from 'dotenv';
 
 // Configure quill editor options
 class PreserveWhiteSpace {
