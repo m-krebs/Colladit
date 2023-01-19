@@ -12,7 +12,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-const socketPort = process.env.SOCKET_PORT;
+const socketPort = process.env.SOCKET_PORT || 8080;
 const wss = new WebSocketServer({port: socketPort});
 
 let lastChange = [{suid: '', content: ''}];
@@ -47,7 +47,7 @@ wss.on('connection', (ws, req) => {
 
 const app = express();
 app.use(express.json());
-const port = process.env.PORT;
+const port = process.env.PORT || 3001;
 
 app.get('/api/sessions', (req, res) => {
   let clients = [];

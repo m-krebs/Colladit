@@ -3,6 +3,7 @@ import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../../style/editor.css';
 import {validate} from 'uuid';
+import * as dotenv from 'dotenv';
 
 // Configure quill editor options
 class PreserveWhiteSpace {
@@ -35,7 +36,7 @@ let ws;
 if (validate(window.location.href.substring(
     window.location.href.lastIndexOf('/') + 1))) {
   try {
-    ws = new WebSocket('ws://10.0.206.4:8080?uuid=' +
+    ws = new WebSocket(`ws://${process.env.SERVER_IP || 'localhost'}:${process.env.SOCKET_PORT || '8080'}?uuid=` +
         window.location.href.substring(
             window.location.href.lastIndexOf('/') + 1));
     ws.addEventListener('open', () => {
